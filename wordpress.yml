@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-dep
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+      type: fronttier
+  template:
+    metadata:
+      name: wordpress
+      labels:
+        app: wordpress
+        type: fronttier
+    spec:
+      containers:
+        - name: wordpress
+          image: wordpress:latest
